@@ -1,15 +1,21 @@
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
-
 
 public class PlayerRotate : MonoBehaviour
 {
+    public GameObject player;
+    public float sensitivity = 3f;
+
+    private float verticalRotation = 0f;
+
     void Update()
     {
-        float x = Input.GetAxis("Mouse X");
-        float y = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        player.transform.Rotate(0, mouseX, 0);
 
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -45f, 45f);
 
-        transform.eulerAngles += new Vector3(-Mathf.Clamp(y, -45f, 45f), -Mathf.Clamp(x, -45f, 45f), 0);
+        transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
     }
 }
