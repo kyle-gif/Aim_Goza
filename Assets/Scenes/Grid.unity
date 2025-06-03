@@ -487,6 +487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0627937dd134170a82aab044dcf4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 903555581925079671, guid: 7bebb08ac991e483784780c09383c649, type: 3}
+  spawnPoint: {fileID: 162305301}
 --- !u!4 &1741234277
 Transform:
   m_ObjectHideFlags: 0

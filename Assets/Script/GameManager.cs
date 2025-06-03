@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        strategy.SetStrategy(new GridAl(targets[0], spawnPoint));
+        GridAl gridAl = gameObject.AddComponent<GridAl>();
+        gridAl.Initialize(targets[0], spawnPoint);
+        strategy.SetStrategy(gridAl);
     }
 
     private void Update()

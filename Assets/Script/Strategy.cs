@@ -5,12 +5,7 @@ public abstract class Strategy : MonoBehaviour
 {
     protected GameObject target;
     protected Transform shotSpawn;
-
-    public Strategy(GameObject target, Transform shotSpawn)
-    {
-        this.target = target;
-        this.shotSpawn = shotSpawn;
-    }
+    
 
     public abstract void Strating(); //전략패턴 함수 실행 쓸때 재정의 해라 앧즐아
     public abstract void UpdateStrat();
