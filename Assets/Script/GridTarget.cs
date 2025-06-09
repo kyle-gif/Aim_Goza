@@ -4,21 +4,23 @@ using UnityEngine;
 public class GridTarget : Target
 {
     private Vector3[] gridLoc;
-    [SerializeField] private float gridSize =1f;
+    [SerializeField] private float gridSize =3f;
+    private Vector3[] targetPos = new Vector3[9];
+
+
     private void Start()
     {
-        gridLoc = new Vector3[9];
         for (int i = 0; i < 9; i++)
         {
-            gridLoc[i] = new Vector3(i*gridSize, i*gridSize+4,25);
+            targetPos[i] = transform.position + new Vector3(i, i, 0);
         }
-        StartCoroutine("UpdateTarget");
+        //StartCoroutine("UpdateTarget");
     }
     
     
     public override void OnHit()
     {
-        transform.position = gridLoc[Random.Range(0, gridLoc.Length)];
+        transform.position = gridLoc[Random.Range(0, 9)]* 1f;
         // 그 뭐시냐 점수 올리는 코드 만들어야할 자리
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridAl : Strategy
 {
     
-    public float gridSize = 1f;
+    public float gridSize = 3f;
 
     public void Initialize(GameObject target, Transform spawnPoint)
     {
