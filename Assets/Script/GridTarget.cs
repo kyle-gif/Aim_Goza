@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GridTarget : Target
 {
-    private Vector3[] gridLoc;
     [SerializeField] private float gridSize =3f;
     private Vector3[] targetPos = new Vector3[9];
 
@@ -12,7 +11,7 @@ public class GridTarget : Target
     {
         for (int i = 0; i < 9; i++)
         {
-            targetPos[i] = transform.position + new Vector3(i, i, 0);
+            targetPos[i] = new Vector3(i-1, i, 11);
         }
         //StartCoroutine("UpdateTarget");
     }
@@ -20,7 +19,8 @@ public class GridTarget : Target
     
     public override void OnHit()
     {
-        transform.position = gridLoc[Random.Range(0, 9)]* 1f;
+        transform.position = targetPos[Random.Range(0, 9)]* 1f;
+        GameManager.instance.Count += 1;
         // 그 뭐시냐 점수 올리는 코드 만들어야할 자리
     }
 
