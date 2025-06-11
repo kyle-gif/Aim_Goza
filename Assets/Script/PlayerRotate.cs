@@ -17,5 +17,15 @@ public class PlayerRotate : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -45f, 45f);
 
         transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
+        Debug.DrawRay(transform.position, transform.forward*10000, Color.red);
+        Shoot();
+    }
+
+    public void Shoot()
+    {
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.position, transform.forward*10000, out RaycastHit hit))
+        {
+            hit.transform.GetComponent<Target>().OnHit();
+        }
     }
 }
