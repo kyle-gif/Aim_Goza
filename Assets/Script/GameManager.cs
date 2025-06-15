@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] targets;
     public Transform spawnPoint;
     private STM strategy = new STM(null);
+    public float time = 0;
 
     private bool onGame = false;
     public int Count;
@@ -36,5 +37,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         strategy.UpdateStrategy();
+        
     }
+
+    private void LateUpdate()
+    {
+        if(!onGame)
+            return;
+        time += Time.deltaTime;
+        if (time > 30)
+        {
+            time = 0;
+            Debug.Log("류한석 병신");
+            //여기에 넣으면 됨.
+        }
+            
+    }
+    
 }
