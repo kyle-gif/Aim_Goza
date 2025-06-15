@@ -1,4 +1,6 @@
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnPoint;
     private STM strategy = new STM(null);
     public float time = 0;
+    public ScoreSubmitter submit;
 
     private bool onGame = false;
     public int Count;
@@ -45,11 +48,21 @@ public class GameManager : MonoBehaviour
         if(!onGame)
             return;
         time += Time.deltaTime;
-        if (time > 30)
+        if (time > 5)
         {
             time = 0;
-            Debug.Log("류한석 병신");
-            //여기에 넣으면 됨.
+            onGame = false;
+            int finalScore = Count;
+            string userName = "TestUser";
+            if (submit != null)
+            {
+                submit.SubmitScore(userName, finalScore);
+                Debug.Log(Count + " 값이 정상적으로 전달됨");
+            }
+            else
+            {
+                Debug.LogWarning("ScoreSubmitter가 연결되지 않았습니다!");
+            }
         }
             
     }
