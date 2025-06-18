@@ -13,6 +13,7 @@ public class Sensitive1 : MonoBehaviour
 
     private void UpdateSensitive(float value)
     {
+        slider.value = GameManager.instance.sensitive;
         GameManager.instance.sensitive = value;
     }
 }
