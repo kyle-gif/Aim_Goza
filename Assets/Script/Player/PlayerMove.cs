@@ -11,8 +11,5 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-    private void Start()
-    {
-        GameManager.instance.StartGame(1);
-    }
+    
 }

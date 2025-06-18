@@ -10,8 +10,15 @@ public class ButtonLoad : MonoBehaviour
         SceneManager.LoadScene(btnName);
     }
 
-    public void ChangeCanvas()
+    public void LoadGrid()
     {
-        
+        SceneManager.LoadScene("SampleScene");
+        GameManager.instance.TargetID = 0;
+    }
+
+    public void LoadTrack()
+    {
+        SceneManager.LoadScene("SampleScene");
+        GameManager.instance.TargetID = 1;
     }
 }

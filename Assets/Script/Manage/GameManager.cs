@@ -1,5 +1,6 @@
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -8,11 +9,14 @@ public class GameManager : MonoBehaviour
     
     public float time = 0;
     public ScoreSubmitter submit;
-    
+    public float sensitive;
     public GameObject[] targets;
     private bool onGame = false;
     public int Count;
+    public int TargetID;
+    public GameObject timeCanvas;
     
+    private Text timeText;
     public bool Ongame
     {
         get => onGame;
@@ -21,6 +25,7 @@ public class GameManager : MonoBehaviour
             onGame = value;
             Cursor.visible=!value;
             Cursor.lockState = (value) ? CursorLockMode.Locked :CursorLockMode.None;
+            timeCanvas.SetActive(value);
         }
     }
     private void Awake()
@@ -31,13 +36,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        timeText = timeCanvas.GetComponentInChildren<Text>();
     }
 
     public void StartGame(int count)
     {
         
-        Instantiate(targets[count],new Vector3(4,6,14),Quaternion.identity);
+        Instantiate(targets[TargetID],new Vector3(4,6,14),Quaternion.identity);
         Ongame = true;
     }
 
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
         if(!onGame)
             return;
         time += Time.deltaTime;
+        timeText.text = Mathf.Ceil(5-time).ToString();
         if (time > 5)
         {
             time = 0;
