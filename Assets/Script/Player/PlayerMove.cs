@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -8,5 +9,10 @@ public class PlayerMove : MonoBehaviour
         move = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
         transform.Translate(move*Time.deltaTime*5f);
         
+    }
+
+    private void Start()
+    {
+        GameManager.instance.StartGame(1);
     }
 }

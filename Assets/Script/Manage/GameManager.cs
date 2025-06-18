@@ -5,22 +5,22 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameObject[] targets;
-    public Transform spawnPoint;
-    private STM strategy = new STM(null);
+    
     public float time = 0;
     public ScoreSubmitter submit;
-
+    
+    public GameObject[] targets;
     private bool onGame = false;
     public int Count;
+    
     public bool Ongame
     {
         get => onGame;
         set
         {
             onGame = value;
-            Cursor.visible=false;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible=!value;
+            Cursor.lockState = (value) ? CursorLockMode.Locked :CursorLockMode.None;
         }
     }
     private void Awake()
@@ -31,17 +31,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GridAl gridAl = gameObject.AddComponent<GridAl>();
-        gridAl.Initialize(targets[0], spawnPoint);
-        strategy.SetStrategy(gridAl);
+        
+    }
+
+    public void StartGame(int count)
+    {
+        
+        Instantiate(targets[count],new Vector3(4,6,14),Quaternion.identity);
         Ongame = true;
     }
 
-    private void Update()
-    {
-        strategy.UpdateStrategy();
-        
-    }
 
     private void LateUpdate()
     {

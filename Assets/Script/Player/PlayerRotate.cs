@@ -23,7 +23,7 @@ public class PlayerRotate : MonoBehaviour
 
     public void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.position, transform.forward*10000, out RaycastHit hit))
+        if (Input.GetMouseButton(0) && Physics.Raycast(transform.position, transform.forward*10000, out RaycastHit hit))
         {
             hit.transform.GetComponent<Target>().OnHit();
         }
