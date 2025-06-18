@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerRotate : MonoBehaviour
 {
     //public GameObject player;
-    public float sensitivity = GameManager.instance.sensitive;
+    
 
     private float verticalRotation = 0f;
     private float horizontal;
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * GameManager.instance.sensitive;
+        float mouseY = Input.GetAxis("Mouse Y") * GameManager.instance.sensitive;
         //player.transform.Rotate(0, mouseX, 0);
 
         verticalRotation -= mouseY;

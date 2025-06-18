@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     
     public float time = 0;
     public ScoreSubmitter submit;
-    public float sensitive;
+    public float sensitive =1 ;
     public GameObject[] targets;
     private bool onGame = false;
     public int Count;
