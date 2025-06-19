@@ -1,5 +1,7 @@
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -11,12 +13,10 @@ public class GameManager : MonoBehaviour
     public ScoreSubmitter submit;
     public float sensitive =1 ;
     public GameObject[] targets;
-    private bool onGame = false;
+    public bool onGame = false;
     public int Count;
     public int TargetID;
-    public GameObject timeCanvas;
     
-    private Text timeText;
     public bool Ongame
     {
         get => onGame;
@@ -25,18 +25,26 @@ public class GameManager : MonoBehaviour
             onGame = value;
             Cursor.visible=!value;
             Cursor.lockState = (value) ? CursorLockMode.Locked :CursorLockMode.None;
-            timeCanvas.SetActive(value);
         }
     }
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            
+        }
+        
     }
 
     private void Start()
     {
-        timeText = timeCanvas.GetComponentInChildren<Text>();
     }
 
     public void StartGame(int count)
@@ -49,14 +57,19 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!onGame)
+        if (!onGame)
+        {
+            Debug.Log("게임중아님");
             return;
+            
+        }
         time += Time.deltaTime;
-        timeText.text = Mathf.Ceil(5-time).ToString();
-        if (time > 5)
+        //시간제한 바꾸기
+        if (time > 10)
         {
             time = 0;
-            onGame = false;
+            Ongame= false;
+            SceneManager.LoadScene("ResultScene");
             int finalScore = Count;
             string userName = "TestUser";
             if (submit != null)

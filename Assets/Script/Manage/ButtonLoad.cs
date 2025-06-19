@@ -13,12 +13,14 @@ public class ButtonLoad : MonoBehaviour
     public void LoadGrid()
     {
         SceneManager.LoadScene("SampleScene");
+        GameManager.instance.Ongame = true;
         GameManager.instance.TargetID = 0;
     }
 
     public void LoadTrack()
     {
         SceneManager.LoadScene("SampleScene");
+        GameManager.instance.Ongame = true;
         GameManager.instance.TargetID = 1;
     }
 }
