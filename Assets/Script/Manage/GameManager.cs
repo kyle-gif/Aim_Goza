@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool onGame = false;
     public int Count;
     public int TargetID;
+    public string userName;
     
     public bool Ongame
     {
@@ -71,7 +72,6 @@ public class GameManager : MonoBehaviour
             Ongame= false;
             SceneManager.LoadScene("ResultScene");
             int finalScore = Count;
-            string userName = "TestUser";
             if (submit != null)
             {
                 submit.SubmitScore(userName, finalScore);

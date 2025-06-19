@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonLoad : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class ButtonLoad : MonoBehaviour
     {
         SceneManager.LoadScene(btnName);
     }
+
+    public void SetUserName(InputField inputField)
+    {
+        GameManager.instance.userName = inputField.text;
+    }
+    
 
     public void LoadGrid()
     {
