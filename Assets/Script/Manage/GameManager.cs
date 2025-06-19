@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
     {
         if (!onGame)
         {
-            Debug.Log("게임중아님");
             return;
             
         }
