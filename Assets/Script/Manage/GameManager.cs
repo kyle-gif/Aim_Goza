@@ -1,4 +1,3 @@
-using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -41,6 +40,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             
         }
+        Screen.SetResolution(1920, 1080, true);
         
     }
 
