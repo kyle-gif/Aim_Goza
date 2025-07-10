@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GridTarget : Target
 {
-    [SerializeField] private float gridSize =3f;
     private Vector3[] targetPos = new Vector3[9];
 
     private void Start()
