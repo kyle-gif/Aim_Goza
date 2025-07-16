@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ScoreSubmitter : MonoBehaviour
 {
-    private string submitURL = "http://localhost:8000/api/scores/";
+    private string submitURL = "https://aimgoza.kr/api/scores/";
 
     public void SubmitScore(string username, int score)
     {
