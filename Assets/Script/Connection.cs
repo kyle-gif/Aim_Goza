@@ -18,7 +18,7 @@ public class ScoreSubmitter : MonoBehaviour
     IEnumerator PostScore(string username, int score, string gameType)
     {
         // 이제 gameType 변수를 정상적으로 사용할 수 있습니다.
-        ScoreData data = new ScoreData { username = username, score = score, gameType = gameType };
+        ScoreData data = new ScoreData { username = username, score = score, gameType = gameType.ToLower() };
         string json = JsonUtility.ToJson(data);
 
         using (UnityWebRequest www = new UnityWebRequest(submitURL, "POST"))
