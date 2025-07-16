@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+public enum GameType
+{
+    
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -73,7 +77,7 @@ public class GameManager : MonoBehaviour
             int finalScore = Count;
             if (submit != null)
             {
-                submit.SubmitScore(userName, finalScore);
+                submit.SubmitScore(userName, finalScore,(TargetID == 0) ? "Grid" : "Track");
                 Debug.Log(Count + " 값이 정상적으로 전달됨");
             }
             else
